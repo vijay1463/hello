@@ -9,12 +9,12 @@ pipeline {
                 
             }
         }
-        //stage('Build') {
-            //steps {
-              // Run Maven on a Unix agent.
-              //sh "mvn -Dmaven.test.failure.ignore=true clean package"
-            //}
-        //}
+        stage('Build') {
+            steps {
+               Run Maven on a Unix agent.
+              sh "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+        }
         stage('Docker installing') {
             steps {
               // Installing doker.
@@ -35,9 +35,9 @@ pipeline {
 
         stage('Push Docker image') {
             steps { 
-               //withCredentials([string(credentialsId: 'Dockerpass', variable: 'Dockerhub')]) {
-              //sh "sudo docker login -u vijay1211 -p ${Dockerhub}"
-               //sh "sudo docker push vijay1211/my-app:${env.BUILD_NUMBER}"
+               withCredentials([string(credentialsId: 'Dockerpass', variable: 'Dockerhub')]) {
+               sh "sudo docker login -u vijay1211 -p ${Dockerhub}"
+               sh "sudo docker push vijay1211/my-app:${env.BUILD_NUMBER}"
                sh "sudo docker run -p 8082:8080 -d rahulinti123/my-app:${env.BUILD_NUMBER}"
           }
         }  
