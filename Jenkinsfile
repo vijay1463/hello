@@ -33,10 +33,4 @@ pipeline {
             }
         }
 
-        stage('thank you') {
-            
-          }
-        }  
-       }   
-    }
-}  
+        
