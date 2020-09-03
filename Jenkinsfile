@@ -34,7 +34,7 @@ pipeline {
         }
 
         //stage('Push Docker image') {
-            steps { 
+           // steps { 
               // withCredentials([string(credentialsId: 'Dockerpass', variable: 'Dockerhub')]) {
             //   sh "sudo docker login -u vijay1211 -p ${Dockerhub}"
             //   sh "sudo docker push vijay1211/my-app:${env.BUILD_NUMBER}"
